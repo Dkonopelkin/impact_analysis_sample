@@ -1,0 +1,90 @@
+#!/bin/bash
+
+commands_list=()
+run_detekt="false"
+should_use_mainframer="false"
+
+function help() {
+  echo ""
+  echo ""
+  echo "Скрипт нужен для запуска оптимизированных проверок с использованием impact analysis на локальной машине с использованием mirakle/mainframer или без"
+  echo "Решает проблему отсутствия git-репозитория на mirakle/mainframer:"
+  echo "* Шаг 1: Запускает impact analysis на локальной машине и сохраняет результаты в файл (impactAnalysisChangedFileReport)"
+  echo "* Шаг 2: Вызывает проверки"
+  echo ""
+  echo "ИСПОЛЬЗОВАНИЕ: ./optimized-checks [option...]"
+  echo ""
+  echo "Запуск без параметров запускает все проверки."
+  echo ""
+  echo "-h, --help                                                                     Показывает это сообщение."
+  echo "-m, --mainframer, mainframer                                                   Передает управление на mainframer, если Mirakle выключен."
+  echo "-d, --detekt, detekt                                                           Статический анализатор для kotlin кода."
+  echo "-t, --test-debug-unit-test, testDebugUnitTest                                  Прогон Unit тестов."
+  echo ""
+  echo "Примеры:"
+  echo "./optimized-checks                        Запуск всех проверок локально или на Mirakle, если он включен."
+  echo "./optimized-checks -m                     Запуск всех проверок на mainframer. Флаг -m будет проигнорирован, если Mirakle включен."
+  echo "./optimized-checks -d -t -m               Запуск Detekt и прогон unit тестов на mainframer."
+  echo "./optimized-checks detekt                 Запуск Detekt локально или на Mirakle, если он включен."
+  echo "./optimized-checks --test-debug-unit-test Запуск unit тестов локально или на Mirakle, если он включен."
+  echo ""
+}
+
+function runOptimizedDetekt() {
+    ./.tools/detekt/optimized-detekt.sh -eq 0 || exit 1
+}
+
+function runCommands() {
+  local input=("$@")
+  local unique_commands=($(echo "${input[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+  tasks="$(printf "%s " "${unique_commands[@]}")"
+
+  if [ -f "${HOME}/.gradle/init.d/mirakle_init.gradle" ]; then
+    ./gradlew --exclude-task mirakle :impactAnalysisChangedFileReport
+    ./gradlew $tasks
+  else
+    ./gradlew :impactAnalysisChangedFileReport
+    if [ ${should_use_mainframer} == "true" ]; then
+      ./mainframer ./gradlew $tasks
+    else
+      ./gradlew $tasks
+    fi
+  fi
+}
+
+for option in "$@"; do
+  case $option in
+  -h | --help)
+    help
+    exit 0
+    ;;
+  -m | --mainframer | mainframer)
+    should_use_mainframer="true"
+    ;;
+  -d | --detekt | detekt)
+    run_detekt="true"
+    ;;
+  -t | --test-debug-unit-test | testDebugUnitTest)
+    commands_list+=(":optimizedTestDebugUnitTestV2")
+    ;;
+  *)
+    echo "Unknown argument: $option"
+    help
+    exit 1
+    ;;
+  esac
+done
+
+if [ ${run_detekt} == "true" ]; then
+    runOptimizedDetekt
+fi
+
+if [ -z "$commands_list" ]; then
+  if [ ${run_detekt} != "true" ]; then
+    runOptimizedDetekt
+    all_commands=(":optimizedVerifyV2")
+    runCommands "${all_commands[@]}"
+  fi
+else
+  runCommands "${commands_list[@]}"
+fi
