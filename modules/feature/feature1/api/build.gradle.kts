@@ -15,4 +15,5 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":ui-kit"))
     implementation(libs.androidx.core.ktx)
+    testImplementation(libs.junit)
 }

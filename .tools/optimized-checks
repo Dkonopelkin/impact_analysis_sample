@@ -1,5 +1,3 @@
-#!/bin/bash
-
 commands_list=()
 run_detekt="false"
 should_use_mainframer="false"
@@ -14,7 +12,7 @@ function help() {
   echo ""
   echo "ИСПОЛЬЗОВАНИЕ: ./optimized-checks [option...]"
   echo ""
-  echo "Запуск без параметров запускает все проверки."
+  echo "Запуск без параметров запускает тесты и статические анализаторы на mainframer"
   echo ""
   echo "-h, --help                                                                     Показывает это сообщение."
   echo "-m, --mainframer, mainframer                                                   Передает управление на mainframer, если Mirakle выключен."
@@ -22,9 +20,9 @@ function help() {
   echo "-t, --test-debug-unit-test, testDebugUnitTest                                  Прогон Unit тестов."
   echo ""
   echo "Примеры:"
-  echo "./optimized-checks                        Запуск всех проверок локально или на Mirakle, если он включен."
   echo "./optimized-checks -m                     Запуск всех проверок на mainframer. Флаг -m будет проигнорирован, если Mirakle включен."
   echo "./optimized-checks -d -t -m               Запуск Detekt и прогон unit тестов на mainframer."
+  echo "./optimized-checks                        Запуск скрипта с параметрами -d -t"
   echo "./optimized-checks detekt                 Запуск Detekt локально или на Mirakle, если он включен."
   echo "./optimized-checks --test-debug-unit-test Запуск unit тестов локально или на Mirakle, если он включен."
   echo ""
@@ -52,6 +50,10 @@ function runCommands() {
   fi
 }
 
+if [ $# -eq 0 ]; then
+  exec "$0" -d -t
+fi
+
 for option in "$@"; do
   case $option in
   -h | --help)
@@ -64,8 +66,11 @@ for option in "$@"; do
   -d | --detekt | detekt)
     run_detekt="true"
     ;;
+  -r | --verify-release-resources | verifyReleaseResources)
+    commands_list+=(":optimizedVerifyReleaseResources")
+    ;;
   -t | --test-debug-unit-test | testDebugUnitTest)
-    commands_list+=(":optimizedTestDebugUnitTestV2")
+    commands_list+=(":optimizedTestDebugUnitTest")
     ;;
   *)
     echo "Unknown argument: $option"
@@ -75,16 +80,10 @@ for option in "$@"; do
   esac
 done
 
-if [ ${run_detekt} == "true" ]; then
+if [ "$run_detekt" == "true" ]; then
     runOptimizedDetekt
 fi
 
-if [ -z "$commands_list" ]; then
-  if [ ${run_detekt} != "true" ]; then
-    runOptimizedDetekt
-    all_commands=(":optimizedVerifyV2")
-    runCommands "${all_commands[@]}"
-  fi
-else
+if [ ${#commands_list[@]} -gt 0 ]; then
   runCommands "${commands_list[@]}"
 fi
