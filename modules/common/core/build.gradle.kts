@@ -16,4 +16,5 @@ dependencies {
     implementation(project(":base-device"))
     implementation(project(":base-database"))
     implementation(libs.androidx.core.ktx)
+    testImplementation(libs.junit)
 }

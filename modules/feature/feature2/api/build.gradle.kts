@@ -14,4 +14,5 @@ android {
 dependencies {
     implementation(project(":ui-kit"))
     implementation(libs.androidx.core.ktx)
+    testImplementation(libs.junit)
 }

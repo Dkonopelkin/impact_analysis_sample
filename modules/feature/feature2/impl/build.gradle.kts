@@ -16,4 +16,5 @@ dependencies {
     implementation(project(":feature2_api"))
     implementation(project(":feature1_api"))
     implementation(libs.androidx.core.ktx)
+    testImplementation(libs.junit)
 }
