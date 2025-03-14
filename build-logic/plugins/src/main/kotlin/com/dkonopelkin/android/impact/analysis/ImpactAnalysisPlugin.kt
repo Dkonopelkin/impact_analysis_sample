@@ -84,16 +84,27 @@ internal class ImpactAnalysisPlugin : Plugin<Project> {
             targetProjects = { it.changedModuleList }
         ),
         CHANGE_MODULES_WITH_DIRECT_DEPENDENCIES(
-            taskList = setOf(
+            /*
+            В реальном проекте тестам достаточно быть выполненными только для changed и affected модулей.
+            Но в качестве демонстрации, покажем что таски запускаются и для транзитивных модулей также.*/
+            taskList = emptySet(),
+            /*taskList = setOf(
                 "testDebugUnitTest"
-            ),
+            ),*/
             targetProjects = {
                 it.changedModuleList
                     .plus(it.affectedModuleList)
             }
         ),
         CHANGE_MODULES_WITH_TRANSITIVE_DEPENDENCIES(
-            taskList = emptySet(),
+            /*
+            В реальном проекте тестам достаточно быть выполненными только для changed и affected модулей.
+            Но в качестве демонстрации, покажем что таски запускаются и для транзитивных модулей также.
+            */
+            taskList = setOf(
+                "testDebugUnitTest"
+            ),
+            /*taskList = emptySet(),*/
             targetProjects = {
                 it.changedModuleList
                     .plus(it.affectedModuleList)
