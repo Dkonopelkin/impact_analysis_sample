@@ -6,7 +6,7 @@ internal class ModuleGraphAnalyser {
 
     fun findAffectedModules(
         moduleDependantMap: Map<ModuleInfo, Set<ModuleInfo>>,
-        modifiedModules: Set<ModuleInfo>
+        changedModules: Set<ModuleInfo>
     ): AnalysisResult {
         val affectedModules = mutableSetOf<ModuleInfo>()
         val transitivelyAffectedModules = mutableSetOf<ModuleInfo>()
@@ -16,16 +16,16 @@ internal class ModuleGraphAnalyser {
             visited.add(module)
 
             moduleDependantMap[module]?.forEach { dependentModule ->
-                if (dependentModule !in modifiedModules) {
+                if (dependentModule !in changedModules) {
                     transitivelyAffectedModules.add(dependentModule)
                     dfs(dependentModule, visited)
                 }
             }
         }
 
-        modifiedModules.forEach { changedModule ->
+        changedModules.forEach { changedModule ->
             moduleDependantMap[changedModule]?.forEach { dependentModule ->
-                if (dependentModule !in modifiedModules) {
+                if (dependentModule !in changedModules) {
                     affectedModules.add(dependentModule)
                     dfs(dependentModule, mutableSetOf(changedModule))
                 }
@@ -35,8 +35,8 @@ internal class ModuleGraphAnalyser {
         /**
          * Сделаем множества не пересекающимися
          * */
-        affectedModules -= modifiedModules
-        transitivelyAffectedModules -= affectedModules
+        affectedModules -= changedModules
+        transitivelyAffectedModules -= (affectedModules + changedModules)
 
         return AnalysisResult(affectedModules, transitivelyAffectedModules)
     }

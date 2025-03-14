@@ -48,7 +48,7 @@ internal class ImpactAnalysisInteractor(
         /**
          * Сет модулей, код которых изменен
          * */
-        val modifiedModules = allModulesInfoList
+        val changedModules = allModulesInfoList
             .associateWith { changesSearcher.computeChanges(File(it.absolutePath)) }
             .filterValues { it.isNotEmpty() }
 
@@ -67,18 +67,18 @@ internal class ImpactAnalysisInteractor(
         /**
          * Находим модули которые зависят от измененных модулей напрямую и транзитивно
          */
-        val result = moduleGraphAnalyser.findAffectedModules(
+        val affectedModules = moduleGraphAnalyser.findAffectedModules(
             moduleDependantMap = moduleDependantMap,
-            modifiedModules = modifiedModules.keys
+            changedModules = changedModules.keys
         )
 
         if (ENABLE_DEBUG_LOG) {
             println("$LOG_TAG Found changes in ${System.currentTimeMillis() - startTime} ms")
         }
         return ProjectChanges(
-            changedModuleList = modifiedModules.keys.map { it.name }.toSet(),
-            affectedModuleList = result.affectedModuleList.map { it.name }.toSet(),
-            transitivelyAffectedModuleList = result.transitivelyAffectedModuleList.map { it.name }.toSet()
+            changedModuleList = changedModules.keys.map { it.name }.toSet(),
+            affectedModuleList = affectedModules.affectedModuleList.map { it.name }.toSet(),
+            transitivelyAffectedModuleList = affectedModules.transitivelyAffectedModuleList.map { it.name }.toSet()
         )
     }
 
