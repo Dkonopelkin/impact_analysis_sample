@@ -3,8 +3,8 @@ import org.junit.Test
 internal class Feature1ImplTest {
 
     @Test
-    fun `demo test`() {
-        val expected = 4
+    fun `broken test`() {
+        val expected = 5
 
         val actual = 2 * 2
 

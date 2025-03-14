@@ -9,29 +9,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0dcc836b-c8bb-4a80-a5d5-bd55766cca2c" name="Changes" comment="initial commit">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.tools/detekt/generate-detekt-baseline.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.tools/detekt/optimized-detekt.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.tools/optimized-checks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build_scripts/detekt/detekt-cli/cli/detekt-cli" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build_scripts/detekt/detekt-cli/cli/detekt-cli.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build_scripts/detekt/detekt-cli/lib/detekt-cli-1.23.6-all.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build_scripts/detekt/detekt-config.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build_scripts/detekt/rulesets/custom-detekt-rules.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build_scripts/detekt/rulesets/detekt-formatting-1.23.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build_scripts/detekt/rulesets/detekt-rules-libraries-1.23.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/feature/feature1/impl/src/main/java/com/dkonopelkin/feature2/impl/SomeDetektProblem.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/common/base-database/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/modules/common/base-database/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/common/base-device/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/modules/common/base-device/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/common/base-network/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/modules/common/base-network/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/common/core/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/modules/common/core/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/common/ui-kit/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/modules/common/ui-kit/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/feature/feature1/api/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/modules/feature/feature1/api/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/feature/feature1/impl/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/modules/feature/feature1/impl/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/feature/feature2/api/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/modules/feature/feature2/api/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/feature/feature2/impl/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/modules/feature/feature2/impl/build.gradle.kts" afterDir="false" />
+    <list default="true" id="0dcc836b-c8bb-4a80-a5d5-bd55766cca2c" name="Changes" comment="update naming">
+      <change afterPath="$PROJECT_DIR$/modules/common/base-database/NewFile.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/feature/feature1/impl/src/test/kotlin/Feature1ImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modules/feature/feature1/impl/src/test/kotlin/Feature1ImplTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,12 +31,57 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/modules/common/base-database">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Impact_analysis_sample" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Impact_analysis_sample" type="f1a62948:ProjectNode" />
+                <item name="Impact_analysis_sample" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Impact_analysis_sample" type="f1a62948:ProjectNode" />
+                <item name="Impact_analysis_sample" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Impact_analysis_sample" type="f1a62948:ProjectNode" />
+                <item name="Impact_analysis_sample" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="impact analysis" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Impact_analysis_sample" type="f1a62948:ProjectNode" />
+                <item name="Impact_analysis_sample" type="2d1252cf:ModuleNode" />
+                <item name="base-database" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Impact_analysis_sample" type="f1a62948:ProjectNode" />
+                <item name="Impact_analysis_sample" type="2d1252cf:ModuleNode" />
+                <item name="base-database" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Impact_analysis_sample" type="f1a62948:ProjectNode" />
+                <item name="Impact_analysis_sample" type="2d1252cf:ModuleNode" />
+                <item name="base-database" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="impact analysis" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -67,6 +93,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="module-info" />
+        <option value="Class" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -79,6 +107,16 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitRewordedCommitMessages">
+    <option name="commitMessagesMapping">
+      <RewordedCommitMessageMapping>
+        <option name="originalMessage" value="add fake tests" />
+        <option name="rewordedMessage" value="add Impact Analysis code" />
+      </RewordedCommitMessageMapping>
+    </option>
+    <option name="currentCommit" value="1" />
+    <option name="onto" value="1db55cc2a931a4064134d14b96ca54a4ff71532c" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -89,44 +127,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.app.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "develop",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/d.konopelkin/AndroidStudioProjects/impact_analysis_sample/build_scripts",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "show.do.not.copy.http.proxy.settings.to.gradle": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Feature2ImplTest.should return true.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Impact_analysis_sample [testDebugUnitTest].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/d.konopelkin/AndroidStudioProjects/impact_analysis_sample/build-logic/plugins/src/main/kotlin/com/dkonopelkin/android/superdemoapp/dependencies&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;show.do.not.copy.http.proxy.settings.to.gradle&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/build_scripts" />
-      <recent name="$PROJECT_DIR$/.tools" />
-      <recent name="$PROJECT_DIR$/.tools" />
+      <recent name="$PROJECT_DIR$/build-logic/plugins/src/main/kotlin/com/dkonopelkin/android/superdemoapp/dependencies" />
+      <recent name="$PROJECT_DIR$/build-logic/plugins/src/main/kotlin/com/dkonopelkin/android/impact/analysis/changes" />
       <recent name="$PROJECT_DIR$/build-logic/plugins/src/main/kotlin/com/dkonopelkin/android/impact/analysis" />
-      <recent name="$PROJECT_DIR$/build-logic/plugins/src/main/kotlin/com/dkonopelkin/android/impactanalysis" />
+      <recent name="$PROJECT_DIR$/build-logic/plugins/src/main/kotlin/com/dkonopelkin/android/impact" />
+      <recent name="$PROJECT_DIR$/modules/common/base-database/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/modules/feature/feature1/impl" />
       <recent name="$PROJECT_DIR$/build-logic/plugins/src/main/kotlin" />
       <recent name="$PROJECT_DIR$/modules/feature/feature1/api/src/main/java/com/dkonopelkin/feature1" />
       <recent name="$PROJECT_DIR$/modules/feature/feature1/api/src/main/java/com/dkonopelkin" />
       <recent name="$PROJECT_DIR$/modules/feature/feature2/api/src/main/java/com/dkonopelkin/feature2" />
-      <recent name="$PROJECT_DIR$/modules/feature/feature2/api/src/main/java/com/dkonopelkin" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
-      <recent name="com.dkonopelkin.android.impactanalysis" />
-      <recent name="" />
+      <recent name="com.dkonopelkin.android.conventions" />
+      <recent name="com.dkonopelkin.android.base" />
+      <recent name="com.dkonopelkin.android.superdemoapp.dependencies" />
+      <recent name="com.dkonopelkin.android.superdemoapp.utils" />
+      <recent name="com.dkonopelkin.android.impact.analysis.model" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.Impact_analysis_sample [testDebugUnitTest]">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Impact_analysis_sample.app.main" />
       <option name="DEPLOY" value="true" />
@@ -195,6 +238,58 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Feature2ImplTest.should return true" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":feature2_impl:testDebugUnitTest" />
+            <option value="--tests" />
+            <option value="&quot;Feature2ImplTest.should return true&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Impact_analysis_sample [testDebugUnitTest]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="testDebugUnitTest" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Impact_analysis_sample [testDebugUnitTest]" />
+        <item itemvalue="Gradle.Feature2ImplTest.should return true" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -213,11 +308,114 @@
       <option name="project" value="LOCAL" />
       <updated>1741011001503</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add detekt impact analysis solution">
+      <option name="closed" value="true" />
+      <created>1741013932283</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1741013932284</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add fake tests">
+      <option name="closed" value="true" />
+      <created>1741271671275</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1741271671275</updated>
+    </task>
+    <task id="LOCAL-00004" summary="copy Impact Analysis code">
+      <option name="closed" value="true" />
+      <created>1741790444574</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1741790444574</updated>
+    </task>
+    <task id="LOCAL-00005" summary="copy Impact Analysis code">
+      <option name="closed" value="true" />
+      <created>1741793046667</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1741793046667</updated>
+    </task>
+    <task id="LOCAL-00006" summary="remove cian things">
+      <option name="closed" value="true" />
+      <created>1741794787097</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1741794787097</updated>
+    </task>
+    <task id="LOCAL-00007" summary="use optional-tasks">
+      <option name="closed" value="true" />
+      <created>1741878086793</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1741878086793</updated>
+    </task>
+    <task id="LOCAL-00008" summary="final changes">
+      <option name="closed" value="true" />
+      <created>1741881118353</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1741881118353</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add module graph">
+      <option name="closed" value="true" />
+      <created>1741944123759</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1741944123759</updated>
+    </task>
+    <task id="LOCAL-00010" summary="update naming">
+      <option name="closed" value="true" />
+      <created>1741951598251</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1741951598251</updated>
+    </task>
+    <task id="LOCAL-00011" summary="update naming">
+      <option name="closed" value="true" />
+      <created>1741954262691</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1741954262691</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="add detekt impact analysis solution" />
+    <MESSAGE value="Copy IA to project" />
+    <MESSAGE value="add fake tests" />
+    <MESSAGE value="123" />
+    <MESSAGE value="copy Impact Analysis code" />
+    <MESSAGE value="detekt" />
+    <MESSAGE value="remove cian things" />
+    <MESSAGE value="use optional-tasks" />
+    <MESSAGE value="final changes" />
+    <MESSAGE value="add Impact Analysis code" />
+    <MESSAGE value="add module graph" />
+    <MESSAGE value="update naming" />
+    <option name="LAST_COMMIT_MESSAGE" value="update naming" />
   </component>
 </project>
