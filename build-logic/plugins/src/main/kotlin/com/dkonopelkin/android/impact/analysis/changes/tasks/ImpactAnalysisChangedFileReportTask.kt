@@ -22,8 +22,8 @@ import javax.inject.Inject
 internal abstract class ImpactAnalysisChangedFileReportTask
 @Inject constructor() : DefaultTask() {
 
-    private val impactFile: File
-    private val changedFilesMap: Map<ModuleData, File>
+    private val reportFile: File
+    private val moduleDataMap: Map<ModuleData, File>
     private val gitChangesSearcher: ChangesSearcher
     private val fileChangesSearcher: ChangesSearcher
     private val changedFilesReportManager = ChangedFilesReportManager()
@@ -33,8 +33,8 @@ internal abstract class ImpactAnalysisChangedFileReportTask
         group = IMPACT_ANALYSIS_TASK_GROUP
         description = "Save changed file properties to XML file"
 
-        impactFile = changedFilesReportManager.getDefaultReportFile(project.rootProject)
-        changedFilesMap = project.rootProject.subprojects.associate {
+        reportFile = changedFilesReportManager.getDefaultReportFile(project.rootProject)
+        moduleDataMap = project.rootProject.subprojects.associate {
             val moduleData = ModuleData(
                 name = it.name,
                 relativePath = it.projectDir.absolutePath.replace(it.rootProject.projectDir.absolutePath, "")
@@ -47,7 +47,7 @@ internal abstract class ImpactAnalysisChangedFileReportTask
             target = TARGET_BRANCH,
         )
         fileChangesSearcher = changesSearcherFactory.createFileChangesSearcher(
-            reportFile = impactFile
+            reportFile = reportFile
         )
     }
 
@@ -57,7 +57,7 @@ internal abstract class ImpactAnalysisChangedFileReportTask
          * Получаем результаты из git и сохраняем их в файл
          */
         val changesFromGit = getChanges(gitChangesSearcher)
-        changedFilesReportManager.writeChangedFilesToReport(impactFile, changesFromGit)
+        changedFilesReportManager.writeChangedFilesToReport(reportFile, changesFromGit)
 
         if (ENABLE_DEBUG_LOG) {
             /**
@@ -67,7 +67,7 @@ internal abstract class ImpactAnalysisChangedFileReportTask
             printChangesFromGit(changesFromGit)
             printChangesFromReport()
         }
-        println("Impact analysis: Changes saved to ${impactFile.absolutePath}")
+        println("Impact analysis: Changes saved to ${reportFile.absolutePath}")
     }
 
     private fun printChangesFromReport() {
@@ -90,7 +90,7 @@ internal abstract class ImpactAnalysisChangedFileReportTask
     private fun getChanges(
         changesSearcher: ChangesSearcher
     ): Map<ModuleData, List<ChangedFile>> {
-        return changedFilesMap
+        return moduleDataMap
             .mapValues { changesSearcher.computeChanges(it.value) }
             .filterValues { it.isNotEmpty() }
     }
