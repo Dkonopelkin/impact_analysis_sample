@@ -25,18 +25,14 @@ import com.dkonopelkin.android.superdemoapp.utils.SettingsUtils
  * - Непосредственно измененные (Changed), если в модули были изменены файлы.
  * - Затронутые (Affected), если если использует Changed модуль напрямую.
  * - Транзитивно затронутые (Transitively Affected), если использует Affected или другой Transitively Affected модуль
- * // FIXME: @dkonopelkin вставить ссылку на пример
-
+ *
  * Файлы могут быть только Changed.
  *
  * В зависимости от стратегии оптимизации, таски будут запущены для разных групп модулей:
  * @property [OptimizeStrategy.ONLY_CHANGED_MODULES]
  * Таски, будут запущены только для changed модулей.
  *
- * @property [OptimizeStrategy.CHANGE_MODULES_WITH_DIRECT_DEPENDENCIES]
- * Таски, будут запущены для changes + affected модулей.
- *
- * @property [OptimizeStrategy.CHANGE_MODULES_WITH_TRANSITIVE_DEPENDENCIES]
+ * @property [OptimizeStrategy.CHANGED_MODULES_WITH_DEPENDENCIES]
  * Таски, будут запущены для changes + affected + transitively affected модулей.
  *
  * @property tasksToProxyInSubProjects Таски, которые нужно создать в подпроектах. Обертки в подпроектах нужны для
@@ -83,28 +79,10 @@ internal class ImpactAnalysisPlugin : Plugin<Project> {
             ),
             targetProjects = { it.changedModuleList }
         ),
-        CHANGE_MODULES_WITH_DIRECT_DEPENDENCIES(
-            /*
-            В реальном проекте тестам достаточно быть выполненными только для changed и affected модулей.
-            Но в качестве демонстрации, покажем что таски запускаются и для транзитивных модулей также.*/
-            taskList = emptySet(),
-            /*taskList = setOf(
-                "testDebugUnitTest"
-            ),*/
-            targetProjects = {
-                it.changedModuleList
-                    .plus(it.affectedModuleList)
-            }
-        ),
-        CHANGE_MODULES_WITH_TRANSITIVE_DEPENDENCIES(
-            /*
-            В реальном проекте тестам достаточно быть выполненными только для changed и affected модулей.
-            Но в качестве демонстрации, покажем что таски запускаются и для транзитивных модулей также.
-            */
+        CHANGED_MODULES_WITH_DEPENDENCIES(
             taskList = setOf(
                 "testDebugUnitTest"
             ),
-            /*taskList = emptySet(),*/
             targetProjects = {
                 it.changedModuleList
                     .plus(it.affectedModuleList)
@@ -114,8 +92,7 @@ internal class ImpactAnalysisPlugin : Plugin<Project> {
     }
 
     private val tasksToProxyInSubProjects = OptimizeStrategy.ONLY_CHANGED_MODULES.taskList
-        .plus(OptimizeStrategy.CHANGE_MODULES_WITH_DIRECT_DEPENDENCIES.taskList)
-        .plus(OptimizeStrategy.CHANGE_MODULES_WITH_TRANSITIVE_DEPENDENCIES.taskList)
+        .plus(OptimizeStrategy.CHANGED_MODULES_WITH_DEPENDENCIES.taskList)
     private val modulesToExcludeFromAffectedLocally = setOf(
         "app",
     )
