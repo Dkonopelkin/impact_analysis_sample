@@ -40,8 +40,8 @@ internal class ChangesSearcherFactory(
     ): ChangesSearcher {
         return GitChangesSearcher(
             gitRootDir = rootProject.rootDir,
-            providers = rootProject.providers,
-            target = target,
+            providerFactory = rootProject.providers,
+            targetBranch = target,
         )
     }
 }

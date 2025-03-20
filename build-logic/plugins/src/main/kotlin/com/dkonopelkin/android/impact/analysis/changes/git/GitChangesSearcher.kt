@@ -12,12 +12,12 @@ import java.io.File
  */
 internal class GitChangesSearcher(
     private val gitRootDir: File,
-    private val providers: ProviderFactory,
-    private val target: String
+    private val providerFactory: ProviderFactory,
+    private val targetBranch: String
 ) : ChangesSearcher {
 
     private val cache: MutableMap<ChangesSearcher.CacheKey, List<ChangedFile>> = mutableMapOf()
-    private val gitDiff by lazy { gitDiffWith(target) }
+    private val gitDiff by lazy { gitDiffWith(targetBranch) }
 
     init {
         require(gitRootDir.exists()) { "Directory ${gitRootDir.canonicalPath} doesn't exist" }
@@ -26,7 +26,7 @@ internal class GitChangesSearcher(
 
     override fun computeChanges(targetDirectory: File, excludedDirectories: Iterable<File>): List<ChangedFile> {
         val result = cache.getOrPut(ChangesSearcher.CacheKey(targetDirectory, excludedDirectories)) {
-            computeChangedFiles(targetDirectory, excludedDirectories)
+            computeChangedFilesInDirectory(targetDirectory, excludedDirectories)
         }
         return result
     }
@@ -51,14 +51,14 @@ internal class GitChangesSearcher(
     private fun getRawGitDiff(targetBranch: String): String {
         val command = arrayOf("git", "diff", "--name-status", "$targetBranch")
         println(command.joinToString(separator = " "))
-        val result = providers.exec { commandLine(*command) }
+        val result = providerFactory.exec { commandLine(*command) }
             .standardOutput
             .asText
             .get()
         return result
     }
 
-    private fun computeChangedFiles(
+    private fun computeChangedFilesInDirectory(
         targetDirectory: File,
         excludedDirectories: Iterable<File> = emptyList()
     ): List<ChangedFile> {
