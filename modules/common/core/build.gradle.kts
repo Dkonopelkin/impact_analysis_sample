@@ -12,7 +12,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":base-network"))
+    api(project(":base-network"))
     implementation(project(":base-device"))
     implementation(project(":base-database"))
     implementation(libs.androidx.core.ktx)
